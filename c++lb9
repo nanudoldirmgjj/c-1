@@ -1,0 +1,131 @@
+#include <iostream>
+
+#include<ctime>
+
+using namespace std;
+
+int main()
+
+{
+srand(time(NULL));
+
+int a;
+    cout << "Введите номер задания:" <<  "\n" << "1. Задание 1" << "\n" << "2. Задание 2" << "\n" 
+    << "3. Задание 3"  <<  "\n4. выход \n";
+    cin >> a;
+    while (cin.fail() || a > 4 || a < 1)
+    {
+        cout << "Ошибка ввода!Повторите!\n";
+        cin.clear();
+        cin.ignore(32767, '\n');
+        cin >> a;
+        cout << endl;
+    }
+    bool k = 0;
+    while (k != 1) {
+        
+
+        switch (a) {
+        case 1:
+        {
+            cout << "Задание 1" << "\n";
+int a = 4;
+int* pa = &a;
+*pa = 5;
+cout << "a = " << *pa << "\n*pa = " << pa;
+
+ break;
+        }
+        case 2: {
+            cout << "Задание 2" << endl;
+int N;
+cout << endl << "введите размер массива: ";
+cin >> N;
+int* mas = new int[N];
+for (int i = 0; i < N; i++) {
+    mas[i] = 0;
+}
+int ran = rand() % N;
+int* aran = &ran;
+mas[ran] = 1;
+
+for (int i = 0; i < N; i++) {
+    cout << mas[i];
+}
+
+
+int count = 1;
+while (true) {
+    int p;
+    cout << "\nугадайте позицию единицы\n" ;
+    cin >> p;
+    if (p == ran) {
+        cout << "вы угадали c " << count << " попытки";
+        break;
+    } else if (p < ran){
+        cout << "единица находится правее\n";
+    } else {
+        cout << "единица находится левее\n";
+    }
+    count++;
+}
+ delete[] mas;
+ break;
+            }
+        case 3: {
+            cout << "Задание 3" << endl;
+/* вариант 4. Дана квадратная матрица А порядка n. Найдите сумму
+положительных элементов матрицы, стоящих над побочной диагональю
+(элементы диагонали включительно).*/
+int n;
+cout << "введите порядок матрицы" << endl;
+cin >> n;
+int matrix[n][n];
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        matrix[i][j] = -10 + rand() % 21;
+        cout << matrix[i][j] << " ";
+    }
+    cout << endl;
+}
+
+int sum = 0;
+
+for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+        if(i < n - j - 1 && matrix[i][j] > 0) {
+            sum += matrix[i][j];
+        }
+    }
+}
+
+cout << endl << "сумма положительных элементов матрицы, стоящих над побочной диагональю = " << sum;
+ break;
+            }
+        case 4: {
+             cout << "выход из программы...";
+default:   k = 1;
+
+
+        }
+
+        }
+        if (k == 1) {
+            break;
+        }else {
+            cout << endl << "Введите номер задания:" << endl;
+              cin >> a;
+                  while (cin.fail() || a > 4 || a < 1)
+    {
+        cout << "Ошибка ввода!Повторите!\n";
+        cin.clear();
+        cin.ignore(32767, '\n');
+        cin >> a;
+        cout << endl;
+    }
+        }
+
+        
+    }
+    return 0;
+}
